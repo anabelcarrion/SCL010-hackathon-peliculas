@@ -1,3 +1,4 @@
+//boton de busqueda
 const btnSearch = document.getElementById("btnSearch");
 btnSearch.addEventListener("click", showPageData);
 
@@ -20,7 +21,6 @@ function showPageData() {
                 let element = list["Search"][i];
                 data.getMoviesByImdbID(element["imdbID"])
                     .then(movie => {
-                        console.log(movie);
                         let col = document.createElement("div");
                         col.setAttribute("class", "col-sm-6 col-lg-3");
                         let moviePoster = movie["Poster"];
