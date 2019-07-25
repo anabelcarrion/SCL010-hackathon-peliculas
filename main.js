@@ -1,4 +1,4 @@
-//boton de busqueda
+
 const btnSearch = document.getElementById("btnSearch");
 btnSearch.addEventListener("click", showPageData);
 
@@ -14,9 +14,7 @@ function showPageData() {
     let tittle = document.getElementById("textToSearch").value;
     let type = getBtnActive();
     data.getMoviesByTitle(tittle, type )
-        .then(list => {
-            let tabla = "<table>" + "<tr>" + "<th>" + "Titulo" + "</th>";
-
+        .then(list => {           
             for (let i = 0; i < list["Search"].length; i++) {
                 let element = list["Search"][i];
                 data.getMoviesByImdbID(element["imdbID"])
