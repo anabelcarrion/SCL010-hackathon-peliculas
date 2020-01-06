@@ -9,9 +9,11 @@ const btnSeries = document.getElementById("btnSeries");
 btnSeries.addEventListener("click", function(){ selectBtn(btnSeries); });
 
 function showPageData() {
-
-    document.getElementById("cards").innerHTML = "";
     let tittle = document.getElementById("textToSearch").value;
+    if (tittle===""){
+     alert ("\n Enter a title in the search engine");
+    }else{
+    document.getElementById("cards").innerHTML = "";
     let type = getBtnActive();
     data.getMoviesByTitle(tittle, type )
         .then(list => {           
@@ -48,6 +50,7 @@ function showPageData() {
 
             }
         });
+    }
 }
 
 function getBtnActive() {
@@ -64,23 +67,23 @@ function getBtnActive() {
 
 
 function selectBtn(btnselected) {
-
+    let tittle = document.getElementById("textToSearch").value;
     let activeBtn = getBtnActive();
 
     if (activeBtn == "movie") {
         let btnMovies = document.getElementById("btnMovies");
         btnMovies.classList.remove("active");
 
-
     } else {
         let btnSeries = document.getElementById("btnSeries");
         btnSeries.classList.remove("active");
     }
-    document.getElementById("cards").innerHTML = "";
     btnselected.classList.add("active");
 
+    if (!(tittle==="")){
     showPageData();
-
+    }
+     
 }
 
 $('#shareToFriend').on('show.bs.modal', function (event) {
